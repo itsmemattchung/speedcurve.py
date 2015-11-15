@@ -2,12 +2,6 @@ from setuptools import setup
 
 packages = [
     'speedcurve',
-    'speedcurve.sites',
-    'speedcurve.urls',
-    'speedcurve.tests',
-    'speedcurve.notes',
-    'speedcurve.deployments',
-    'speedcurve.errors'
 ]
 
 setup(
