@@ -3,6 +3,8 @@ speedcurve
 
 A wrapper for around the `SpeedCurve API v1`_
 
+`Full documentation`_
+
 Example Use
 -----------
 
@@ -15,3 +17,4 @@ Example Use
 
 
 .. _SpeedCurve API v1 : https://api.speedcurve.com/
+.. _Full documentation: http://speedcurvepy.readthedocs.org/
