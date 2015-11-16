@@ -8,7 +8,6 @@ class SpeedCurveObject(object):
     def _update_attributes(self, json):
         pass
 
-
 class SpeedCurveCore(SpeedCurveObject):
 
     def __init__(self, json, api_key=None, session=None):
