@@ -2,8 +2,6 @@
 Welcome to Speedcurve.py's documentation!
 =========================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
