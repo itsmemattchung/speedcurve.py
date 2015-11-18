@@ -1,0 +1,14 @@
+language: python
+
+sudo: false
+
+install:
+    pip install tox
+
+notifications:
+  on_success: change
+  on_failure: always
+
+matrix:
+  include:
+    - python: 2.7
