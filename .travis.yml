@@ -5,6 +5,8 @@ sudo: false
 install:
     pip install tox
 
+script: tox
+
 notifications:
   on_success: change
   on_failure: always
