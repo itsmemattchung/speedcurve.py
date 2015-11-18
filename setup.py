@@ -1,5 +1,4 @@
 from setuptools import setup
-from speedcurve import __version__
 
 packages = [
     'speedcurve',
@@ -16,5 +15,5 @@ setup(
     name='speedcurve.py',
     url='https://speedcurvepy.readthedocs.org',
     packages=packages,
-    version=__version__
+    version='0.1.0'
 )
