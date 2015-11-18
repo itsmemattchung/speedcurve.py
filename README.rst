@@ -1,6 +1,8 @@
 speedcurve
 =============
 
+.. image:: https://travis-ci.org/itsmemattchung/speedcurve.py.svg?branch=master
+
 A wrapper for around the `SpeedCurve API v1`_
 
 `Full documentation`_
