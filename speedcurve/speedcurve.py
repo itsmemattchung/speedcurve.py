@@ -35,12 +35,12 @@ class SpeedCurve(SpeedCurveCore):
         sites = [self._instance_or_null(Site, site) for site in json['sites']]
         return sites
 
-    def test(self, test_id=None):
+    def test(self, id=None):
         """Retrieve test specified by test id
 
-        :param string test_id: (required) ID of test
+        :param string id: (required) ID of test
         :returns: :class:`<speedcurve.tests.Test>`
         """
-        url = self.session.build_url('tests', str(test_id))
+        url = self.session.build_url('tests', str(id))
         json = self._json(self._get(url), 200)
         return self._instance_or_null(Test, json)
