@@ -20,5 +20,5 @@ class TestSpeedcurve(IntegrationHelper):
 
         cassette_name = self.cassette_name('test')
         with self.recorder.use_cassette(cassette_name):
-            test = self.sc.test(test_id='151118_QR_a380ad519383d0223518af46f429868e')
+            test = self.sc.test(id='151118_QR_a380ad519383d0223518af46f429868e')
             assert isinstance(test, speedcurve.tests.Test)
