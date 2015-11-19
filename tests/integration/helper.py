@@ -1,5 +1,4 @@
 import os
-import base64
 import speedcurve
 import betamax
 
@@ -15,20 +14,10 @@ class IntegrationHelper(TestCase):
         self.basic_auth = b':'.join([self.api_key, 'bar'])
         self.sc = self.get_client(api_key=self.api_key)
         self.recorder = betamax.Betamax(self.sc.session)
-        self.configure_betamax()
 
     def cassette_name(self, method_name, cls=None):
         class_name = cls or self.described_class
         return '_'.join([class_name, method_name])
-
-    def configure_betamax(self):
-        with betamax.Betamax.configure() as config:
-            config.cassette_library_dir = 'tests/cassettes'
-            config.default_cassette_options['record_mode'] = 'once'
-            config.define_cassette_placeholder(
-                '<BASIC_AUTH>',
-                base64.b64encode(self.basic_auth).decode()
-            )
 
     @property
     def described_class(self):
