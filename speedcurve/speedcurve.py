@@ -40,17 +40,35 @@ class SpeedCurve(SpeedCurveCore):
         """Retrieve test specified by test id
 
         :param string id: (required) ID of test
-        :returns: :class:`<speedcurve.tests.Test>`
+        :returns: instance of :class:`Test <speedcurve.tests.Test>`
         """
         url = self.session.build_url('tests', str(id))
         json = self._json(self._get(url), 200)
         return self._instance_or_null(Test, json)
 
-    def latest_deploy(self):
+    def get_latest_deployment(self):
         """Retrieve latest deployment
 
-        :returns: :class:`<speedcurve.deployments.Deployment>'
+        :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
         url = self.session.build_url('deploy', 'latest')
         json = self._json(self._get(url), 200)
         return self._instance_or_null(Deployment, json)
+
+    def get_deployment(self, id=None):
+        """Retrieve a deployment specified by id
+
+        :params int id: (required) id of deployment
+        :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
+        """
+        url = self.session.build_url('deploy', int(id))
+        json = self._json(self._get(url), 200)
+        return self._instance_or_null(Deployment, json)
+
+    def add_deployment(self, note=None, detail=None):
+        """Add a deployment and trigger round of testing.
+
+        :param string note: (required) short note used on site
+        :param string detail: (optional) detail to display for more context
+        """
+        pass
