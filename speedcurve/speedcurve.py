@@ -4,6 +4,7 @@ from .models import SpeedCurveCore
 from .sites import Site
 from .tests import Test
 from .urls import Url
+from .deployments import Deployment
 
 
 class SpeedCurve(SpeedCurveCore):
@@ -44,3 +45,12 @@ class SpeedCurve(SpeedCurveCore):
         url = self.session.build_url('tests', str(id))
         json = self._json(self._get(url), 200)
         return self._instance_or_null(Test, json)
+
+    def latest_deploy(self):
+        """Retrieve latest deployment
+
+        :returns: :class:`<speedcurve.deployments.Deployment>'
+        """
+        url = self.session.build_url('deploy', 'latest')
+        json = self._json(self._get(url), 200)
+        return self._instance_or_null(Deployment, json)
