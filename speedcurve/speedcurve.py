@@ -2,6 +2,7 @@
 
 from .models import SpeedCurveCore
 from .sites import Site
+from .tests import Test
 from .urls import Url
 
 
@@ -30,6 +31,16 @@ class SpeedCurve(SpeedCurveCore):
     def sites(self):
         """Retrieve all sites for account"""
         url = self.session.build_url('sites')
-        json = self._json(self._get(url))
+        json = self._json(self._get(url), 200)
         sites = [self._instance_or_null(Site, site) for site in json['sites']]
         return sites
+
+    def test(self, test_id=None):
+        """Retrieve test specified by test id
+
+        :param string test_id: (required) ID of test
+        :returns: :class:`<speedcurve.tests.Test>`
+        """
+        url = self.session.build_url('tests', str(test_id))
+        json = self._json(self._get(url), 200)
+        return self._instance_or_null(Test, json)

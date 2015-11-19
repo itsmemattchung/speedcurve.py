@@ -1,4 +1,6 @@
+from json import dumps
 from .session import SpeedCurveSession
+from . import exceptions
 
 
 class SpeedCurveObject(object):
@@ -7,6 +9,7 @@ class SpeedCurveObject(object):
 
     def _update_attributes(self, json):
         pass
+
 
 class SpeedCurveCore(SpeedCurveObject):
 
@@ -17,14 +20,31 @@ class SpeedCurveCore(SpeedCurveObject):
         elif session is None:
             session = SpeedCurveSession(api_key=api_key)
         self.session = session
+        self._as_json = json
 
         super(SpeedCurveCore, self).__init__(json)
+
+    def as_json(self):
+        return dumps(self._as_json)
 
     def _get(self, url, *args, **kwargs):
         return self.session.get(url, *args, **kwargs)
 
-    def _json(self, response):
-        return response.json()
+    def _json(self, response, status_code):
+        ret = None
+
+        if self._expected_response(response, status_code, 404):
+            ret = response.json()
+        return ret
+
+    def _expected_response(self, response, true_code, false_code):
+        if response is not None:
+            status_code = response.status_code
+            if status_code == true_code:
+                return True
+            if true_code != false_code and status_code >= 400:
+                raise exceptions.exceptions_for(response)
+        return False
 
     def _instance_or_null(self, instance_class=None, json=None):
         try:

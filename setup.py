@@ -15,5 +15,5 @@ setup(
     name='speedcurve.py',
     url='https://speedcurvepy.readthedocs.org',
     packages=packages,
-    version='0.1.0'
+    version='0.1.1'
 )
