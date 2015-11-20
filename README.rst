@@ -3,7 +3,7 @@ speedcurve
 
 .. image:: https://travis-ci.org/itsmemattchung/speedcurve.py.svg?branch=master
 
-A wrapper for around the `SpeedCurve API v1`_
+A python wrapper for around the `SpeedCurve API v1`_
 
 `Full documentation`_
 
@@ -49,3 +49,16 @@ Run :code:`pip install -r dev-requirements.txt`.  You can then execute :code:`to
 
 .. _SpeedCurve API v1 : https://api.speedcurve.com/
 .. _Full documentation: http://speedcurvepy.readthedocs.org/
+
+.. include:: contributing.rst
+
+Contributing
+------------
+
+1. Fork the repository and make changes (add yourself to **AUTHORS.rst**)
+2. Test changes locally by running **tox**
+3. Squash changes into a single commit
+4. Create pull request to **develop** branch
+
+
+
