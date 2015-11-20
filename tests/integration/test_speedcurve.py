@@ -49,3 +49,12 @@ class TestSpeedcurve(IntegrationHelper):
         with self.recorder.use_cassette(cassette_name):
             deployment = self.sc.get_latest_deployment()
             assert isinstance(deployment, speedcurve.deployments.Deployment)
+
+    def test_url(self):
+        """Test the ability to retrieve url specified by id."""
+
+        cassette_name = self.cassette_name('url')
+
+        with self.recorder.use_cassette(cassette_name):
+            url = self.sc.url(id=14419)
+            assert isinstance(url, speedcurve.urls.Url)
