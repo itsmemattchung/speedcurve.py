@@ -82,5 +82,5 @@ class SpeedCurve(SpeedCurveCore):
             'days': days,
             'browser': browser
         }
-        json = self._json(self._get(url, params=params))
+        json = self._json(self._get(url, params=params), 200)
         return self._instance_or_null(Url, json)
