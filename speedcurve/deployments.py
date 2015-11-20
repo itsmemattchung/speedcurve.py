@@ -13,4 +13,4 @@ class Deployment(SpeedCurveCore):
         self.detail = json.get('detail')
 
     def __repr__(self):
-        return '<Deployment [{}]>'.format(self.note)
+        return '<Deployment [{}]>'.format(self.id)

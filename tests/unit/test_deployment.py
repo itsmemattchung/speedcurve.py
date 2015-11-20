@@ -13,3 +13,6 @@ class TestDeployment(UnitHelper):
 
     def test_isinstance(self):
         assert isinstance(self.instance, Deployment)
+
+    def test_repr(self):
+        assert repr(self.instance).startswith('<Deployment')
