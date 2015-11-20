@@ -5,7 +5,18 @@ from .helper import IntegrationHelper
 
 class TestSpeedcurve(IntegrationHelper):
 
-    def def_sites(self):
+    def test_add_deployment(self):
+        """Test the ability to add deployment and trigger testing."""
+
+        cassette_name = self.cassette_name('add_deployment')
+        with self.recorder.use_cassette(cassette_name):
+            deployment = self.sc.add_deployment(
+                note='speedcurve.py',
+                detail='additional details from speedcurve.py'
+            )
+            assert isinstance(deployment, speedcurve.deployments.Deployment)
+
+    def test_def_sites(self):
         """Test the ability to retrieve sites."""
 
         cassette_name = self.cassette_name('sites')
@@ -22,6 +33,14 @@ class TestSpeedcurve(IntegrationHelper):
         with self.recorder.use_cassette(cassette_name):
             test = self.sc.test(id='151118_QR_a380ad519383d0223518af46f429868e')
             assert isinstance(test, speedcurve.tests.Test)
+
+    def test_get_deployment(self):
+        """Test the ability to retrieve deployment specified by id."""
+
+        cassette_name = self.cassette_name('get_deployment')
+        with self.recorder.use_cassette(cassette_name):
+            deployment = self.sc.get_deployment(id=11627)
+            assert isinstance(deployment, speedcurve.deployments.Deployment)
 
     def test_get_latest_deployment(self):
         """Test the ability to retrieve latest deployment."""

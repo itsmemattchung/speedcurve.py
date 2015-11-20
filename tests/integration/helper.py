@@ -11,7 +11,6 @@ class IntegrationHelper(TestCase):
 
     def setUp(self):
         self.api_key = os.environ.get('SPEEDCURVE_API', 'foo')
-        self.basic_auth = b':'.join([self.api_key, 'bar'])
         self.sc = self.get_client(api_key=self.api_key)
         self.recorder = betamax.Betamax(self.sc.session)
 
