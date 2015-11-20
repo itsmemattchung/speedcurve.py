@@ -16,7 +16,7 @@ class TestSpeedcurve(IntegrationHelper):
             )
             assert isinstance(deployment, speedcurve.deployments.Deployment)
 
-    def test_def_sites(self):
+    def test_sites(self):
         """Test the ability to retrieve sites."""
 
         cassette_name = self.cassette_name('sites')
