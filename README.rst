@@ -50,7 +50,6 @@ Run :code:`pip install -r dev-requirements.txt`.  You can then execute :code:`to
 .. _SpeedCurve API v1 : https://api.speedcurve.com/
 .. _Full documentation: http://speedcurvepy.readthedocs.org/
 
-.. include:: contributing.rst
 
 Contributing
 ------------

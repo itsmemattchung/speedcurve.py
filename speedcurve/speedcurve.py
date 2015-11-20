@@ -1,4 +1,4 @@
-"""Speedcurve API"""
+"""Speedcurve API."""
 
 from .models import SpeedCurveCore
 from .sites import Site
@@ -8,8 +8,14 @@ from .deployments import Deployment
 
 
 class SpeedCurve(SpeedCurveCore):
+    """Stored session information."""
 
     def __init__(self, api_key=None):
+        """Constructor for SpeedCurve.
+
+        :param string api_key: (optional) API key for authentication
+        :returns: :class:`SpeedCurve <speedcurve.SpeedCurve>`
+        """
         super(SpeedCurve, self).__init__({}, api_key=api_key)
 
     def add_deployment(self, note=None, detail=None):
@@ -33,7 +39,7 @@ class SpeedCurve(SpeedCurveCore):
         return self._instance_or_null(Deployment, json)
 
     def get_latest_deployment(self):
-        """Retrieve latest deployment
+        """Retrieve latest deployment.
 
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
@@ -42,7 +48,7 @@ class SpeedCurve(SpeedCurveCore):
         return self._instance_or_null(Deployment, json)
 
     def get_deployment(self, id=None):
-        """Retrieve a deployment specified by id
+        """Retrieve a deployment specified by id.
 
         :params int id: (required) id of deployment
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
@@ -52,14 +58,14 @@ class SpeedCurve(SpeedCurveCore):
         return self._instance_or_null(Deployment, json)
 
     def sites(self):
-        """Retrieve all sites for account"""
+        """Retrieve all sites for account."""
         url = self.session.build_url('sites')
         json = self._json(self._get(url), 200)
         sites = [self._instance_or_null(Site, site) for site in json['sites']]
         return sites
 
     def test(self, id=None):
-        """Retrieve test specified by test id
+        """Retrieve test specified by test id.
 
         :param string id: (required) ID of test
         :returns: instance of :class:`Test <speedcurve.tests.Test>`
@@ -69,7 +75,7 @@ class SpeedCurve(SpeedCurveCore):
         return self._instance_or_null(Test, json)
 
     def url(self, id=None, days=30, browser='all'):
-        """Retrieve url specified by id
+        """Retrieve url specified by id.
 
         :param int id: (required) id of URL
         :param int days: (optional) number of days of tests (max: 365)
