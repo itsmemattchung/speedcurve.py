@@ -25,3 +25,7 @@ class SpeedCurveSession(requests.Session):
     def get(self, *args, **kwargs):
         kwargs['auth'] = self.basic_authentication
         return super(SpeedCurveSession, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        kwargs['auth'] = self.basic_authentication
+        return super(SpeedCurveSession, self).post(*args, **kwargs)

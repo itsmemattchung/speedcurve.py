@@ -3,7 +3,7 @@ import base64
 import betamax
 
 api_key = os.environ.get('SPEEDCURVE_API', 'foo')
-basic_auth = b':'.join([api_key, 'bar'])
+basic_auth = b':'.join([api_key, 'x'])
 
 with betamax.Betamax.configure() as config:
     config.cassette_library_dir = 'tests/cassettes'

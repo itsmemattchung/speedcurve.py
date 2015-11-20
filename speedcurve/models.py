@@ -13,7 +13,7 @@ class SpeedCurveObject(object):
 
 class SpeedCurveCore(SpeedCurveObject):
 
-    def __init__(self, json, api_key=None, session=None):
+    def __init__(self, json, session=None, api_key=None):
 
         if hasattr(session, 'session'):
             session = session.session
@@ -43,7 +43,7 @@ class SpeedCurveCore(SpeedCurveObject):
             if status_code == true_code:
                 return True
             if true_code != false_code and status_code >= 400:
-                raise exceptions.exceptions_for(response)
+                raise exceptions.get_error_for(response)
         return False
 
     def _instance_or_null(self, instance_class=None, json=None):
@@ -51,3 +51,6 @@ class SpeedCurveCore(SpeedCurveObject):
             return instance_class(json, self)
         except TypeError:
             return instance_class(json)
+
+    def _post(self, url, *args, **kwargs):
+        return self.session.post(url, *args, **kwargs)
