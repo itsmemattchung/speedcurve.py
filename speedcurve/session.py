@@ -6,9 +6,9 @@ class SpeedCurveSession(requests.Session):
 
     def __init__(self, api_key=None):
         if api_key is None:
-            raise Exception("API Key Required")
+            raise ValueError("API Key Required")
 
-        self.api_key = api_key
+        self.api_key = str(api_key)
         self.basic_authentication = (str(self.api_key), 'x')
         super(SpeedCurveSession, self).__init__()
         self.headers.update({
