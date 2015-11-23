@@ -1,13 +1,14 @@
+"""Integration test for SpeedCurve."""
 import speedcurve
 
 from .helper import IntegrationHelper
 
 
 class TestSpeedcurve(IntegrationHelper):
+    """Unit Test for SpeedCurve."""
 
     def test_add_deployment(self):
         """Test the ability to add deployment and trigger testing."""
-
         cassette_name = self.cassette_name('add_deployment')
         with self.recorder.use_cassette(cassette_name):
             deployment = self.sc.add_deployment(
@@ -16,9 +17,17 @@ class TestSpeedcurve(IntegrationHelper):
             )
             assert isinstance(deployment, speedcurve.deployments.Deployment)
 
+    def test_notes(self):
+        """Test the ability to retrieve notes."""
+        cassette_name = self.cassette_name('notes')
+        with self.recorder.use_cassette(cassette_name):
+            notes = self.sc.notes()
+            note = notes[0]
+            assert len(notes) > 0
+            assert isinstance(note, speedcurve.notes.Note)
+
     def test_sites(self):
         """Test the ability to retrieve sites."""
-
         cassette_name = self.cassette_name('sites')
         with self.recorder.use_cassette(cassette_name):
             sites = self.sc.sites()
@@ -28,7 +37,6 @@ class TestSpeedcurve(IntegrationHelper):
 
     def test_test(self):
         """Test the ability to retrieve test specified by id."""
-
         cassette_name = self.cassette_name('test')
         with self.recorder.use_cassette(cassette_name):
             test = self.sc.test(id='151118_QR_a380ad519383d0223518af46f429868e')
@@ -36,7 +44,6 @@ class TestSpeedcurve(IntegrationHelper):
 
     def test_get_deployment(self):
         """Test the ability to retrieve deployment specified by id."""
-
         cassette_name = self.cassette_name('get_deployment')
         with self.recorder.use_cassette(cassette_name):
             deployment = self.sc.get_deployment(id=11627)
@@ -44,7 +51,6 @@ class TestSpeedcurve(IntegrationHelper):
 
     def test_get_latest_deployment(self):
         """Test the ability to retrieve latest deployment."""
-
         cassette_name = self.cassette_name('latest_deployment')
         with self.recorder.use_cassette(cassette_name):
             deployment = self.sc.get_latest_deployment()
@@ -52,7 +58,6 @@ class TestSpeedcurve(IntegrationHelper):
 
     def test_url(self):
         """Test the ability to retrieve url specified by id."""
-
         cassette_name = self.cassette_name('url')
 
         with self.recorder.use_cassette(cassette_name):

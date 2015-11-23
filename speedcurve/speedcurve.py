@@ -1,6 +1,7 @@
 """Speedcurve API."""
 
 from .models import SpeedCurveCore
+from .notes import Note
 from .sites import Site
 from .tests import Test
 from .urls import Url
@@ -56,6 +57,16 @@ class SpeedCurve(SpeedCurveCore):
         url = self.session.build_url('deploy', str(id))
         json = self._json(self._get(url), 200)
         return self._instance_or_null(Deployment, json)
+
+    def notes(self):
+        """Retrieve all notes for main site in User' account.
+
+        :returns: Generator of :class:`Note <speedcurve.notes.Note>`
+        """
+        url = self.session.build_url('notes')
+        json = self._json(self._get(url), 200)
+        notes = [self._instance_or_null(Note, json_note) for json_note in json['notes']]
+        return notes
 
     def sites(self):
         """Retrieve all sites for account."""
