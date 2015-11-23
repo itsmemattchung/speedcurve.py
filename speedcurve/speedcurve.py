@@ -65,7 +65,7 @@ class SpeedCurve(SpeedCurveCore):
         """
         url = self.session.build_url('notes')
         json = self._json(self._get(url), 200)
-        notes = [self._instance_or_null(Note, json_note) for json_note in json['notes']]
+        notes = [self._instance_or_null(Note, note) for note in json['notes']]
         return notes
 
     def sites(self):
