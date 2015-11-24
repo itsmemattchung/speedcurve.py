@@ -12,6 +12,18 @@ class TestSite(UnitHelper):
     described_class = Site
     example_data = get_example_data()
 
+    def test_attributes(self):
+        """Show attributes exist in class."""
+        attributes = [
+            'id',
+            'median',
+            'name',
+            'urls'
+        ]
+
+        for attribute in attributes:
+            assert getattr(self.instance, attribute)
+
     def test_repr(self):
         """Show that instance string is formatted correctly."""
         assert repr(self.instance).startswith('<Site [')
