@@ -91,7 +91,7 @@ class SpeedCurve(SpeedCurveCore):
         :param int id: (required) id of URL
         :param int days: (optional) number of days of tests (max: 365)
         :param string browser: (optional) all, chrome, firefox, ie, or safari
-        :returns: generator of :class:`Url <speedcurve.urls.Url>`
+        :returns: :class:`Url <speedcurve.urls.Url>`
 
         """
         url = self.session.build_url('urls', str(id))
