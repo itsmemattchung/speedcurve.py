@@ -36,10 +36,17 @@ Example Use
        detail="Testing origin response times"
    )
 
-   # Add a deployment
-   sc.create_deployment(
+   # Add a deployment to default Site for API key
+   sc.add_deployment(
        note="Code deployment",
        detail="Triggered a deployment to test session capability"
+   )
+
+   # Add a deployment and trigger round of testing specified by site-id
+   sc.add_deployment(
+       site_id=123,
+       note="Code deployment",
+       detail="Triggered a deployment to test origin response times."""
    )
 
 Testing

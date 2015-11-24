@@ -19,17 +19,21 @@ class SpeedCurve(SpeedCurveCore):
         """
         super(SpeedCurve, self).__init__({}, api_key=api_key)
 
-    def add_deployment(self, note=None, detail=None):
+    def add_deployment(self, site_id=None, note=None, detail=None):
         """Add a deployment and trigger round of testing.
 
+        :param int site_id: (optional) site id to trigger deploy.
         :param string note: (required) short note used on site
         :param string detail: (optional) detail to display for more context
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
         data = {
+            'site_id': site_id or None,
             'note': str(note) or '',
             'detail': str(detail) or ''
         }
+
+        data = self._remove_none_values(data)
 
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
