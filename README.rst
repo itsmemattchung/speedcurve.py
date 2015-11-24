@@ -62,6 +62,6 @@ Contributing
 Note:
 ~~~~~
 
-Travis-CI **will** if there isn't 100% test coverage. Please include a test with your change.
+Travis-CI **will** FAIL if there isn't 100% test coverage. Please include a test with your change.
 
 
