@@ -22,7 +22,7 @@ Example Use
    urls = sc.urls()
 
    # Get trends and chrome tests for a URL
-   urls = sc.urls(browser='chrome')
+   urls = sc.url(browser='chrome')
 
    # Get a test
    test = sc.test(id='140317_BA_3W8')
