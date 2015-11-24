@@ -1,24 +1,49 @@
 {
-      "name": "Guardian",
-      "type": "main",
-      "home_id": 536,
-      "home_url": "http://www.theguardian.com/uk",
-      "section_id": 1729,
-      "section_url":    "http://www.theguardian.com/football",
-      "item_id": 1730,
-      "item_url": "http://www.theguardian.com/politics/2013/",
-      "median":[
-        {
-          "day":"2014-03-26",
-          "test":"140325_WS_2V3",
-          "byte": 130,
-          "render": 421,
-          "dom": 417,
-          "loaded": 423,
-          "size": 33695,
-          "requests": 6,
-          "pagespeed": 89,
-          "speedindex": 400
-        }
-      ]
+  "site_id": 123,
+  "name": "Guardian",
+  "urls":[
+    {
+       "url_id": 123,
+       "url": "http://www.theguardian.com/"
+    }
+  ],
+  "median":[
+    {
+      "timezone": "Pacific/Auckland",
+      "day":"2014-03-26",
+      "timestamp": 1448147927,
+      "test":"140325_WS_2V3",
+      "location": "us-west-1",
+      "run": 2,
+      "browser": "Google Chrome",
+      "browser_version": "46.0.2490.86",
+      "byte": 130,
+      "render": 421,
+      "dom": 417,
+      "loaded": 423,
+      "size": 33695,
+      "image_saving": 0,
+      "requests": 6,
+      "pagespeed": 89,
+      "speedindex": 400,
+      "html_requests": 1,
+      "html_size": 6041,
+      "css_requests": 2,
+      "css_size": 6977,
+      "js_requests": 2,
+      "js_size": 41261,
+      "image_requests": 3,
+      "image_size": 27676,
+      "font_requests": 0,
+      "font_size": 0,
+      "text_requests": 0,
+      "text_size": 0,
+      "flash_requests": 0,
+      "flash_size": 0,
+      "other_requests": 0,
+      "other_size": 0,
+      "har": "https://wpt.speedcurve.com/export.php?test=140325_WS_2V3",
+      "screen": "https://wpt.speedcurve.com/getfile.php?test=140325_WS_2V3&file=2_screen.jpg"
+    }
+  ]
 }
