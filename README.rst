@@ -59,5 +59,9 @@ Contributing
 3. Squash changes into a single commit
 4. Create pull request to **develop** branch
 
+Note:
+~~~~~
+
+Travis-CI **will** if there isn't 100% test coverage. Please include a test with your change.
 
 
