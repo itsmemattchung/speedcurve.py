@@ -38,3 +38,17 @@ class TestSpeedCurveCore(UnitHelper):
         instance = self.instance._instance_or_null(instance_class=mocker,
                                                    json=self.example_data)
         assert isinstance(instance, SpeedCurveCore) is False
+
+    def test_remove_none_values_from_dictionary(self):
+        """Test that None values are removed from dictionary."""
+        example_dict = {
+            'a': True,
+            'b': None,
+            'c': False
+        }
+        should_be_dict = {
+            'a': True,
+            'c': False
+        }
+        assert self.instance._remove_none_values(example_dict) == should_be_dict
+        assert self.instance._remove_none_values({}) is None

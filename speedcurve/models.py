@@ -52,5 +52,15 @@ class SpeedCurveCore(SpeedCurveObject):
         except TypeError:
             return instance_class(json)
 
+    def _remove_none_values(self, dictionary):
+        """Helper method to remove None values from dictionary."""
+        data = dictionary.copy()
+        if not data:
+            return
+        for key, value in data.items():
+            if value is None:
+                del(data[key])
+        return data
+
     def _post(self, url, *args, **kwargs):
         return self.session.post(url, *args, **kwargs)
