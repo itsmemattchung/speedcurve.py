@@ -24,7 +24,7 @@ class TestSpeedcurve(IntegrationHelper):
             deployment = self.sc.add_deployment(
                 site_id=1209,
                 note='speedcurve.py',
-                detail='detailsforspeedcurve.py'
+                detail='additional details from speedcurve.py'
             )
             assert isinstance(deployment, speedcurve.deployments.Deployment)
 
