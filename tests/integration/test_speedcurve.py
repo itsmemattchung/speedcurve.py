@@ -18,8 +18,15 @@ class TestSpeedcurve(IntegrationHelper):
             assert isinstance(deployment, speedcurve.deployments.Deployment)
 
     def test_add_deployment_with_site_id(self):
-        """Test the ability to add deployment and trigger testing."""
-        pass
+        """Test the ability to add deployment with id and trigger testing."""
+        cassette_name = self.cassette_name('add_deploy_with_site_id')
+        with self.recorder.use_cassette(cassette_name):
+            deployment = self.sc.add_deployment(
+                site_id=1209,
+                note='speedcurve.py',
+                detail='detailsforspeedcurve.py'
+            )
+            assert isinstance(deployment, speedcurve.deployments.Deployment)
 
     def test_notes(self):
         """Test the ability to retrieve notes."""
