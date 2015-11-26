@@ -1,4 +1,9 @@
+"""All exceptions for speedcurve library."""
+
+
 class SpeedCurveError(Exception):
+    """The base exception class."""
+
     def __init__(self, response):
         super(SpeedCurveError, self).__init__(response)
         self.response = response
@@ -15,8 +20,23 @@ class SpeedCurveError(Exception):
 class AuthenticationFailed(SpeedCurveError):
     pass
 
+
+class BadRequest(SpeedCurveError):
+    pass
+
+
+class ForbiddenError(SpeedCurveError):
+    pass
+
+
+class NotFoundError(SpeedCurveError):
+    pass
+
 error_classes = {
-    401: AuthenticationFailed
+    400: BadRequest,
+    401: AuthenticationFailed,
+    403: ForbiddenError,
+    404: NotFoundError
 }
 
 
