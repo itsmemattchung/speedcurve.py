@@ -28,7 +28,7 @@ class SpeedCurve(SpeedCurveCore):
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
         data = {
-            'site_id': str(site_id) or None,
+            'site_id': site_id or None,
             'note': str(note) or '',
             'detail': str(detail) or ''
         }

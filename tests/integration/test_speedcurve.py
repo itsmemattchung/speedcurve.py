@@ -1,6 +1,5 @@
 """Integration test for SpeedCurve."""
 import speedcurve
-
 from .helper import IntegrationHelper
 
 
