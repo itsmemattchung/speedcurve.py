@@ -79,7 +79,9 @@ class SpeedCurve(SpeedCurveCore):
         json = self._json(self._get(url), 200)
         sites = None
         if json:
-            sites = [self._instance_or_null(Site, site) for site in json.get('sites')]
+            sites = [
+                self._instance_or_null(Site, s) for s in json.get('sites')
+            ]
         return sites
 
     def test(self, id=None):
