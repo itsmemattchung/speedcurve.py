@@ -27,6 +27,9 @@ class SpeedCurveCore(SpeedCurveObject):
     def as_json(self):
         return dumps(self._as_json)
 
+    def _build_url(self, *args, **kwargs):
+        return self.session.build_url(*args, **kwargs)
+
     def _get(self, url, *args, **kwargs):
         return self.session.get(url, *args, **kwargs)
 

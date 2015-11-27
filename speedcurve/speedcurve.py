@@ -11,13 +11,13 @@ from .deployments import Deployment
 class SpeedCurve(SpeedCurveCore):
     """Stored session information."""
 
-    def __init__(self, api_key=None):
+    def __init__(self, api_key=None, session=None):
         """Constructor for SpeedCurve.
 
         :param string api_key: (optional) API key for authentication
         :returns: :class:`SpeedCurve <speedcurve.SpeedCurve>`
         """
-        super(SpeedCurve, self).__init__({}, api_key=api_key)
+        super(SpeedCurve, self).__init__({}, api_key=api_key, session=session)
 
     def add_deployment(self, site_id=None, note=None, detail=None):
         """Add a deployment and trigger round of testing.
@@ -48,9 +48,10 @@ class SpeedCurve(SpeedCurveCore):
 
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
-        url = self.session.build_url('deploy', 'latest')
+        url = self._build_url('deploy', 'latest')
         json = self._json(self._get(url), 200)
-        return self._instance_or_null(Deployment, json)
+        if json:
+            return self._instance_or_null(Deployment, json)
 
     def get_deployment(self, id=None):
         """Retrieve a deployment specified by id.
@@ -74,9 +75,13 @@ class SpeedCurve(SpeedCurveCore):
 
     def sites(self):
         """Retrieve all sites for account."""
-        url = self.session.build_url('sites')
+        url = self._build_url('sites')
         json = self._json(self._get(url), 200)
-        sites = [self._instance_or_null(Site, site) for site in json['sites']]
+        sites = None
+        if json:
+            sites = [
+                self._instance_or_null(Site, s) for s in json.get('sites')
+            ]
         return sites
 
     def test(self, id=None):

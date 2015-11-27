@@ -5,7 +5,12 @@ except ImportError:
 import os
 import json
 import unittest
+import speedcurve
 from speedcurve.session import SpeedCurveSession
+
+
+def build_url(self, *args, **kwargs):
+    return speedcurve.session.SpeedCurveSession(api_key='').build_url(*args, **kwargs)
 
 
 def create_example_data_helper(example_filename):
@@ -23,7 +28,6 @@ def create_example_data_helper(example_filename):
 
 
 class UnitHelper(unittest.TestCase):
-
     """Base class for unittest."""
 
     described_class = None
@@ -34,7 +38,7 @@ class UnitHelper(unittest.TestCase):
             instance = self.described_class(self.example_data,
                                             self.session)
         else:
-            instance = self.described_class()
+            instance = self.described_class(api_key='', session=self.session)
 
         return instance
 
@@ -42,11 +46,11 @@ class UnitHelper(unittest.TestCase):
         session = mock.create_autospec(SpeedCurveSession)
         session.get.return_value = None
         session.put.return_value = None
-
         return session
 
     def setUp(self):
         self.session = self.create_mocked_session()
+        self.described_class._build_url = build_url
         self.instance = self.create_instance_of_described_class()
 
     def tearDown(self):
