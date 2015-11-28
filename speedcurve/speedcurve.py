@@ -39,9 +39,10 @@ class SpeedCurve(SpeedCurveCore):
             'Content-Type': 'application/x-www-form-urlencoded'
         }
 
-        url = self.session.build_url('deploy')
+        url = self._build_url('deploy')
         json = self._json(self._post(url, data=data, headers=headers), 200)
-        return self._instance_or_null(Deployment, json)
+        if json:
+            return self._instance_or_null(Deployment, json)
 
     def get_latest_deployment(self):
         """Retrieve latest deployment.
