@@ -46,6 +46,7 @@ class UnitHelper(unittest.TestCase):
         session = mock.create_autospec(SpeedCurveSession)
         session.get.return_value = None
         session.put.return_value = None
+        session.post.return_value = None
         return session
 
     def setUp(self):
