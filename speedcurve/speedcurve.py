@@ -60,19 +60,23 @@ class SpeedCurve(SpeedCurveCore):
         :params int id: (required) id of deployment
         :returns: :class:`Deployment <speedcurve.deployments.Deployment>`
         """
-        url = self.session.build_url('deploy', str(id))
+        url = self._build_url('deploy', str(id))
         json = self._json(self._get(url), 200)
-        return self._instance_or_null(Deployment, json)
+        if json:
+            return self._instance_or_null(Deployment, json)
 
     def notes(self):
         """Retrieve all notes for main site in User' account.
 
         :returns: Generator of :class:`Note <speedcurve.notes.Note>`
         """
-        url = self.session.build_url('notes')
+        url = self._build_url('notes')
         json = self._json(self._get(url), 200)
-        notes = [self._instance_or_null(Note, note) for note in json['notes']]
-        return notes
+        if json:
+            notes = [
+                self._instance_or_null(Note, note) for note in json['notes']
+            ]
+            return notes
 
     def sites(self):
         """Retrieve all sites for account."""
@@ -91,9 +95,10 @@ class SpeedCurve(SpeedCurveCore):
         :param string id: (required) ID of test
         :returns: instance of :class:`Test <speedcurve.tests.Test>`
         """
-        url = self.session.build_url('tests', str(id))
+        url = self._build_url('tests', str(id))
         json = self._json(self._get(url), 200)
-        return self._instance_or_null(Test, json)
+        if json:
+            return self._instance_or_null(Test, json)
 
     def url(self, id=None, days=30, browser='all'):
         """Retrieve url specified by id.
@@ -104,10 +109,11 @@ class SpeedCurve(SpeedCurveCore):
         :returns: :class:`Url <speedcurve.urls.Url>`
 
         """
-        url = self.session.build_url('urls', str(id))
+        url = self._build_url('urls', str(id))
         params = {
             'days': days,
             'browser': browser
         }
         json = self._json(self._get(url, params=params), 200)
-        return self._instance_or_null(Url, json)
+        if json:
+            return self._instance_or_null(Url, json)

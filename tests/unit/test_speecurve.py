@@ -41,3 +41,39 @@ class TestSpeedCurve(UnitHelper):
         self.session.get.assert_called_once_with(
             'https://api.speedcurve.com/v1/deploy/latest'
         )
+
+    def test_get_deployment(self):
+        """Show that user can retrieve a specific deployment."""
+        self.instance.get_deployment(id=1)
+
+        self.session.get.assert_called_once_with(
+            'https://api.speedcurve.com/v1/deploy/1'
+        )
+
+    def test_notes(self):
+        """Show that a user can retrieve notes."""
+        self.instance.notes()
+
+        self.session.get.assert_called_once_with(
+            'https://api.speedcurve.com/v1/notes'
+        )
+
+    def test_test(self):
+        """Show that a user can retrieve a test specified by id."""
+        self.instance.test(id=1)
+
+        self.session.get.assert_called_once_with(
+            'https://api.speedcurve.com/v1/tests/1'
+        )
+
+    def test_url(self):
+        """Show that that a user can retrieve a url."""
+        self.instance.url(id=1, days=1, browser='chrome')
+
+        self.session.get.assert_called_once_with(
+            'https://api.speedcurve.com/v1/urls/1',
+            params={
+                'days': 1,
+                'browser': 'chrome'
+            }
+        )
