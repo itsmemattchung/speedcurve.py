@@ -5,7 +5,7 @@ class Deployment(SpeedCurveCore):
     """Deployment class."""
 
     def _update_attributes(self, json):
-        self.id = json.get('id')
+        self.id = json.get('deploy_id')
         self.tests_completed = json.get('tests-completed')
         self.status = json.get('status')
         self.tests_remaining = json.get('tests-remaining')
