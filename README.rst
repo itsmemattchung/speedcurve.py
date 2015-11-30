@@ -3,7 +3,7 @@ speedcurve
 
 .. image:: https://travis-ci.org/itsmemattchung/speedcurve.py.svg?branch=master
 
-A python wrapper for around the `SpeedCurve API v1`_
+A python wrapper for around the `SpeedCurve API v1`_. Heavily influenced by `github3.py`_
 
 `Full documentation`_
 
@@ -72,3 +72,4 @@ Note:
 Travis-CI **will** FAIL if there isn't 100% test coverage. Please include a test with your change.
 
 
+.. _github3.py: https://www.github.com/sigmavirus24/github3.py
