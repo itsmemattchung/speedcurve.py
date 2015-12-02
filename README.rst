@@ -22,7 +22,7 @@ Example Use
    urls = sc.urls()
 
    # Get trends and chrome tests for a URL
-   urls = sc.url(browser='chrome')
+   urls = sc.url(browser='14419')
 
    # Get a test
    test = sc.test(id='140317_BA_3W8')
@@ -35,6 +35,12 @@ Example Use
        note="Cleared CDN Cache",
        detail="Testing origin response times"
    )
+
+   # Get latest deployment
+   latest_deployment = sc.get_latest_deployment()
+
+   # Get a deployment specified by id
+   deployment = sc.get_deployment(id=16627)
 
    # Add a deployment to default Site for API key
    sc.add_deployment(
