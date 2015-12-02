@@ -25,6 +25,10 @@ class BadRequest(SpeedCurveError):
     pass
 
 
+class InternalServerError(SpeedCurveError):
+    pass
+
+
 class ForbiddenError(SpeedCurveError):
     pass
 
@@ -32,11 +36,18 @@ class ForbiddenError(SpeedCurveError):
 class NotFoundError(SpeedCurveError):
     pass
 
+
+class ServiceUnavailable(SpeedCurveError):
+    pass
+
+
 error_classes = {
     400: BadRequest,
     401: AuthenticationFailed,
     403: ForbiddenError,
-    404: NotFoundError
+    404: NotFoundError,
+    500: InternalServerError,
+    503: ServiceUnavailable
 }
 
 
