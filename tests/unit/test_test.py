@@ -1,3 +1,5 @@
+import datetime
+
 from speedcurve.tests import Test
 from .helper import UnitHelper
 from .helper import create_example_data_helper
@@ -15,3 +17,17 @@ class TestTest(UnitHelper):
 
     def test_repr(self):
         assert repr(self.instance).startswith('Test <speedcurve.tests.Test')
+
+    def test_atttributes(self):
+        attributes = (
+            'browser',
+            'browser_version',
+            'byte',
+            'css_requests',
+            'day'
+        )
+
+        for attribute in attributes:
+            assert getattr(self.instance, attribute)
+
+        assert isinstance(self.instance.day, datetime.datetime)
