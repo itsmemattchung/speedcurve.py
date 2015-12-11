@@ -1,3 +1,4 @@
+from datetime import datetime
 from json import dumps
 from .session import SpeedCurveSession
 from . import exceptions
@@ -67,3 +68,6 @@ class SpeedCurveCore(SpeedCurveObject):
 
     def _post(self, url, *args, **kwargs):
         return self.session.post(url, *args, **kwargs)
+
+    def _strptime(self, time_str):
+        return datetime.utcfromtimestamp(time_str)
