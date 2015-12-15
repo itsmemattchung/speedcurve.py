@@ -67,6 +67,11 @@ Run :code:`pip install -r dev-requirements.txt`.  You can then execute :code:`to
 Contributing
 ------------
 
+Guidelines
+~~~~~~~~~~
+
+Explicit is better than implicit 
+
 1. Fork the repository and make changes (add yourself to **AUTHORS.rst**)
 2. Test changes locally by running **tox**
 3. Squash changes into a single commit
