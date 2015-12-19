@@ -50,7 +50,8 @@ class SpeedCurveCore(SpeedCurveObject):
                 raise exceptions.get_error_for(response)
         return False
 
-    def _instance_or_null(self, instance_class=None, json=None):
+    def _instance_or_null(self, instance_class, json):
+        """Instantiate an instance of class."""
         try:
             return instance_class(json, self)
         except TypeError:
