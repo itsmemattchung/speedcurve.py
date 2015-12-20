@@ -54,7 +54,7 @@ class SpeedCurve(SpeedCurveCore):
         if json:
             return self._instance_or_null(Deployment, json)
 
-    def get_deployment(self, id=None):
+    def get_deployment(self, id):
         """Retrieve a deployment specified by id.
 
         :params int id: (required) id of deployment
