@@ -100,7 +100,7 @@ class SpeedCurve(SpeedCurveCore):
         if json:
             return self._instance_or_null(Test, json)
 
-    def url(self, id=None, days=30, browser='all'):
+    def url(self, id, days=30, browser='all'):
         """Retrieve url specified by id.
 
         :param int id: (required) id of URL
