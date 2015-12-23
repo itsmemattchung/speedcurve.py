@@ -89,7 +89,7 @@ class SpeedCurve(SpeedCurveCore):
             ]
         return sites
 
-    def test(self, id=None):
+    def test(self, id):
         """Retrieve test specified by test id.
 
         :param string id: (required) ID of test
