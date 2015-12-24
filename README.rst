@@ -48,7 +48,7 @@ Example Use
        detail="Triggered a deployment to test session capability"
    )
 
-   # Add a deployment and trigger round of testing specified by site-id
+   # Add a deployment and trigger round of testing specified by site id
    sc.add_deployment(
        site_id=123,
        note="Code deployment",
