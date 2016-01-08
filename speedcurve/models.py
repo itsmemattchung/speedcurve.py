@@ -1,5 +1,6 @@
 from datetime import datetime
 from json import dumps
+from .null import NullObject
 from .session import SpeedCurveSession
 from . import exceptions
 
@@ -46,12 +47,14 @@ class SpeedCurveCore(SpeedCurveObject):
             status_code = response.status_code
             if status_code == true_code:
                 return True
-            if true_code != false_code and status_code >= 400:
+            if status_code != false_code and status_code >= 400:
                 raise exceptions.get_error_for(response)
         return False
 
     def _instance_or_null(self, instance_class, json):
         """Instantiate an instance of class."""
+        if json is None:
+            return NullObject(instance_class.__name__)
         try:
             return instance_class(json, self)
         except TypeError:
