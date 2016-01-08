@@ -12,6 +12,7 @@ class Deployment(SpeedCurveCore):
         self.tests_remaining = json.get('tests-remaining')
         self.note = json.get('note')
         self.detail = json.get('detail')
+        self.message = json.get('message')
 
     def __repr__(self):
         return '<Deployment [{}]>'.format(self.id)
