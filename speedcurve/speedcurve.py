@@ -51,8 +51,7 @@ class SpeedCurve(SpeedCurveCore):
         """
         url = self._build_url('deploy', 'latest')
         json = self._json(self._get(url), 200)
-        if json:
-            return self._instance_or_null(Deployment, json)
+        return self._instance_or_null(Deployment, json)
 
     def get_deployment(self, id):
         """Retrieve a deployment specified by id.
